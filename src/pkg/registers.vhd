@@ -1639,13 +1639,20 @@ package registers is
     constant REG_CLOCKING_LOGIC_MMCM_LOCKED_ADDR    : std_logic_vector(1 downto 0) := "00";
     constant REG_CLOCKING_LOGIC_MMCM_LOCKED_BIT    : integer := 1;
 
+    constant REG_CLOCKING_TDC_MMCM_LOCKED_ADDR    : std_logic_vector(1 downto 0) := "00";
+    constant REG_CLOCKING_TDC_MMCM_LOCKED_BIT    : integer := 2;
+
     constant REG_CLOCKING_GBT_MMCM_UNLOCKED_CNT_ADDR    : std_logic_vector(1 downto 0) := "00";
-    constant REG_CLOCKING_GBT_MMCM_UNLOCKED_CNT_MSB    : integer := 23;
-    constant REG_CLOCKING_GBT_MMCM_UNLOCKED_CNT_LSB     : integer := 16;
+    constant REG_CLOCKING_GBT_MMCM_UNLOCKED_CNT_MSB    : integer := 15;
+    constant REG_CLOCKING_GBT_MMCM_UNLOCKED_CNT_LSB     : integer := 8;
 
     constant REG_CLOCKING_LOGIC_MMCM_UNLOCKED_CNT_ADDR    : std_logic_vector(1 downto 0) := "00";
-    constant REG_CLOCKING_LOGIC_MMCM_UNLOCKED_CNT_MSB    : integer := 31;
-    constant REG_CLOCKING_LOGIC_MMCM_UNLOCKED_CNT_LSB     : integer := 24;
+    constant REG_CLOCKING_LOGIC_MMCM_UNLOCKED_CNT_MSB    : integer := 23;
+    constant REG_CLOCKING_LOGIC_MMCM_UNLOCKED_CNT_LSB     : integer := 16;
+
+    constant REG_CLOCKING_TDC_MMCM_UNLOCKED_CNT_ADDR    : std_logic_vector(1 downto 0) := "00";
+    constant REG_CLOCKING_TDC_MMCM_UNLOCKED_CNT_MSB    : integer := 31;
+    constant REG_CLOCKING_TDC_MMCM_UNLOCKED_CNT_LSB     : integer := 24;
 
 
     --============================================================================

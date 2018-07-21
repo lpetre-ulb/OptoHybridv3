@@ -1899,18 +1899,26 @@
             mask="0x00000002"
             description="User logic MMCM locked"
             fw_signal="mmcm_locked(0)"/>
+        <node id="TDC_MMCM_LOCKED" address="0x0" permission="r"
+            mask="0x00000004"
+            description="TDC MMCM locked"
+            fw_signal="mmcm_locked(2)"/>
         <node id="GBT_MMCM_UNLOCKED_CNT" address="0x0" permission="r"
-            mask="0x00ff0000"
+            mask="0x0000ff00"
             description="GBT deserialization MMCM unlocked cnt"
             fw_cnt_en_signal="mmcm_unlocked(1)"
             fw_signal="cnt_eprt_mmcm_unlocked"/>
         <node id="LOGIC_MMCM_UNLOCKED_CNT" address="0x0" permission="r"
-            mask="0xff000000"
+            mask="0x00ff0000"
             description="User logic MMCM unlocked cnt"
             fw_cnt_en_signal="mmcm_unlocked(0)"
             fw_signal="cnt_dskw_mmcm_unlocked"/>
-
-</node>
+        <node id="TDC_MMCM_UNLOCKED_CNT" address="0x0" permission="r"
+            mask="0xff000000"
+            description="TDC MMCM unlocked cnt"
+            fw_cnt_en_signal="mmcm_unlocked(2)"
+            fw_signal="cnt_tdc_mmcm_unlocked"/>
+</node><!--Clocking -->
 
 <!--GBT module -->
 <node id="GBT"  address="0x4000"

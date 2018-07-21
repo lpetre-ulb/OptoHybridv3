@@ -125,8 +125,10 @@ architecture Behavioral of optohybrid_top is
     signal clk_1x           : std_logic;
     signal clk_2x           : std_logic;
     signal clk_4x           : std_logic;
-    signal clk_8x           : std_logic;
     signal clk_4x_90        : std_logic;
+
+    signal tdc_clk_1x       : std_logic;
+    signal tdc_clk_8x       : std_logic;
 
     signal delay_refclk     : std_logic;
     signal delay_refclk_reset : std_logic;
@@ -256,7 +258,9 @@ begin
         clk_2x_o           => clk_2x,
         clk_4x_o           => clk_4x,
         clk_4x_90_o        => clk_4x_90,
-        clk_8x_o           => clk_8x,
+
+        tdc_clk_1x_o       => tdc_clk_1x,
+        tdc_clk_8x_o       => tdc_clk_8x,
 
         cluster_clk_o      => cluster_clk,
         delay_refclk_reset_o => delay_refclk_reset,
@@ -390,8 +394,8 @@ begin
     port map (
 
         -- Clocks
-        clk_1x_i => clk_1x,
-        clk_8x_i => clk_8x,
+        clk_1x_i => tdc_clk_1x,
+        clk_8x_i => tdc_clk_8x,
         reset_i  => reset,
 
         -- Inputs

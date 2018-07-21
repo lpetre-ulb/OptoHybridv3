@@ -42,8 +42,10 @@ port(
     clk_1x_o        : out std_logic;
     clk_2x_o        : out std_logic;
     clk_4x_o        : out std_logic;
-    clk_8x_o        : out std_logic;
     clk_4x_90_o     : out std_logic;
+
+    tdc_clk_1x_o    : out std_logic;
+    tdc_clk_8x_o    : out std_logic;
 
     delay_refclk_o  : out std_logic;
     delay_refclk_reset_o  : out std_logic;
@@ -73,8 +75,8 @@ architecture Behavioral of clocking is
 
     signal gbt_dclk     : std_logic_vector (1 downto 0);
 
-    signal mmcm_locked : std_logic_vector(1 downto 0);
-    signal mmcm_unlocked : std_logic_vector(1 downto 0);
+    signal mmcm_locked : std_logic_vector(2 downto 0);
+    signal mmcm_unlocked : std_logic_vector(2 downto 0);
 
     signal clock : std_logic;
 
@@ -91,6 +93,7 @@ architecture Behavioral of clocking is
     -- Connect counter signal declarations
     signal cnt_eprt_mmcm_unlocked : std_logic_vector (7 downto 0) := (others => '0');
     signal cnt_dskw_mmcm_unlocked : std_logic_vector (7 downto 0) := (others => '0');
+    signal cnt_tdc_mmcm_unlocked : std_logic_vector (7 downto 0) := (others => '0');
     ------ Register signals end ----------------------------------------------
 
 begin
@@ -112,7 +115,6 @@ begin
         clk160_90_o => clk_4x_90_o,
         clk200_o    => delay_refclk_o,
         clk20_135_o => cluster_clk_o,
-        clk320_o    => clk_8x_o,
 
         locked_o    => mmcm_locked(0)
     );
@@ -135,7 +137,18 @@ begin
         locked_o      => mmcm_locked(1)
     );
 
-    mmcms_locked_o     <= mmcm_locked(0) and mmcm_locked(1);
+    clk_gen2 : entity work.tdc_clk_gen
+    port map(
+        clk40_i  => clock,
+
+        clk40_o  => tdc_clk_1x_o,
+        clk320_o => tdc_clk_8x_o,
+
+        locked_o => mmcm_locked(2)
+    );
+
+
+    mmcms_locked_o     <= mmcm_locked(0) and mmcm_locked(1) and mmcm_locked(2);
 
     -- fanout
     process (clock) begin
@@ -143,7 +156,7 @@ begin
         dskw_mmcm_locked_o <= mmcm_locked(0);
         eprt_mmcm_locked_o <= mmcm_locked(1);
 
-        delay_refclk_reset_o <= not (mmcm_locked(0) and mmcm_locked(1));
+        delay_refclk_reset_o <= not (mmcm_locked(0) and mmcm_locked(1) and mmcm_locked(1));
     end if;
     end process;
 
@@ -182,8 +195,10 @@ begin
     -- Connect read signals
     regs_read_arr(0)(REG_CLOCKING_GBT_MMCM_LOCKED_BIT) <= mmcm_locked(1);
     regs_read_arr(0)(REG_CLOCKING_LOGIC_MMCM_LOCKED_BIT) <= mmcm_locked(0);
+    regs_read_arr(0)(REG_CLOCKING_TDC_MMCM_LOCKED_BIT) <= mmcm_locked(2);
     regs_read_arr(0)(REG_CLOCKING_GBT_MMCM_UNLOCKED_CNT_MSB downto REG_CLOCKING_GBT_MMCM_UNLOCKED_CNT_LSB) <= cnt_eprt_mmcm_unlocked;
     regs_read_arr(0)(REG_CLOCKING_LOGIC_MMCM_UNLOCKED_CNT_MSB downto REG_CLOCKING_LOGIC_MMCM_UNLOCKED_CNT_LSB) <= cnt_dskw_mmcm_unlocked;
+    regs_read_arr(0)(REG_CLOCKING_TDC_MMCM_UNLOCKED_CNT_MSB downto REG_CLOCKING_TDC_MMCM_UNLOCKED_CNT_LSB) <= cnt_tdc_mmcm_unlocked;
 
     -- Connect write signals
 
@@ -218,6 +233,19 @@ begin
         en_i      => mmcm_unlocked(0),
         snap_i    => '1',
         count_o   => cnt_dskw_mmcm_unlocked
+    );
+
+
+    COUNTER_CLOCKING_TDC_MMCM_UNLOCKED_CNT : entity work.counter_snap
+    generic map (
+        g_COUNTER_WIDTH  => 8
+    )
+    port map (
+        ref_clk_i => clock,
+        reset_i   => ipb_reset_i,
+        en_i      => mmcm_unlocked(2),
+        snap_i    => '1',
+        count_o   => cnt_tdc_mmcm_unlocked
     );
 
 
