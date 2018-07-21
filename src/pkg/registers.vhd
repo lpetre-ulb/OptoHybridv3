@@ -1737,182 +1737,172 @@ package registers is
     -- Connects to TDC
     --============================================================================
 
-    constant REG_TDC_NUM_REGS : integer := 39;
+    constant REG_TDC_NUM_REGS : integer := 38;
     constant REG_TDC_ADDRESS_MSB : integer := 5;
     constant REG_TDC_ADDRESS_LSB : integer := 0;
-    constant REG_TDC_FIFO_rden_ADDR    : std_logic_vector(5 downto 0) := "00" & x"0";
-    constant REG_TDC_FIFO_rden_MSB    : integer := 23;
-    constant REG_TDC_FIFO_rden_LSB     : integer := 0;
-    constant REG_TDC_FIFO_rden_DEFAULT : std_logic_vector(23 downto 0) := x"000000";
-
-    constant REG_TDC_FIFO_valid_ADDR    : std_logic_vector(5 downto 0) := "00" & x"1";
-    constant REG_TDC_FIFO_valid_MSB    : integer := 23;
-    constant REG_TDC_FIFO_valid_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_underflow_ADDR    : std_logic_vector(5 downto 0) := "00" & x"2";
-    constant REG_TDC_FIFO_underflow_MSB    : integer := 23;
-    constant REG_TDC_FIFO_underflow_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout0_ADDR    : std_logic_vector(5 downto 0) := "00" & x"3";
-    constant REG_TDC_FIFO_dout0_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout0_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout1_ADDR    : std_logic_vector(5 downto 0) := "00" & x"4";
-    constant REG_TDC_FIFO_dout1_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout1_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout2_ADDR    : std_logic_vector(5 downto 0) := "00" & x"5";
-    constant REG_TDC_FIFO_dout2_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout2_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout3_ADDR    : std_logic_vector(5 downto 0) := "00" & x"6";
-    constant REG_TDC_FIFO_dout3_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout3_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout4_ADDR    : std_logic_vector(5 downto 0) := "00" & x"7";
-    constant REG_TDC_FIFO_dout4_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout4_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout5_ADDR    : std_logic_vector(5 downto 0) := "00" & x"8";
-    constant REG_TDC_FIFO_dout5_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout5_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout6_ADDR    : std_logic_vector(5 downto 0) := "00" & x"9";
-    constant REG_TDC_FIFO_dout6_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout6_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout7_ADDR    : std_logic_vector(5 downto 0) := "00" & x"a";
-    constant REG_TDC_FIFO_dout7_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout7_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout8_ADDR    : std_logic_vector(5 downto 0) := "00" & x"b";
-    constant REG_TDC_FIFO_dout8_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout8_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout9_ADDR    : std_logic_vector(5 downto 0) := "00" & x"c";
-    constant REG_TDC_FIFO_dout9_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout9_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout10_ADDR    : std_logic_vector(5 downto 0) := "00" & x"d";
-    constant REG_TDC_FIFO_dout10_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout10_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout11_ADDR    : std_logic_vector(5 downto 0) := "00" & x"e";
-    constant REG_TDC_FIFO_dout11_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout11_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout12_ADDR    : std_logic_vector(5 downto 0) := "00" & x"f";
-    constant REG_TDC_FIFO_dout12_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout12_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout13_ADDR    : std_logic_vector(5 downto 0) := "01" & x"0";
-    constant REG_TDC_FIFO_dout13_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout13_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout14_ADDR    : std_logic_vector(5 downto 0) := "01" & x"1";
-    constant REG_TDC_FIFO_dout14_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout14_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout15_ADDR    : std_logic_vector(5 downto 0) := "01" & x"2";
-    constant REG_TDC_FIFO_dout15_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout15_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout16_ADDR    : std_logic_vector(5 downto 0) := "01" & x"3";
-    constant REG_TDC_FIFO_dout16_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout16_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout17_ADDR    : std_logic_vector(5 downto 0) := "01" & x"4";
-    constant REG_TDC_FIFO_dout17_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout17_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout18_ADDR    : std_logic_vector(5 downto 0) := "01" & x"5";
-    constant REG_TDC_FIFO_dout18_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout18_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout19_ADDR    : std_logic_vector(5 downto 0) := "01" & x"6";
-    constant REG_TDC_FIFO_dout19_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout19_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout20_ADDR    : std_logic_vector(5 downto 0) := "01" & x"7";
-    constant REG_TDC_FIFO_dout20_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout20_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout21_ADDR    : std_logic_vector(5 downto 0) := "01" & x"8";
-    constant REG_TDC_FIFO_dout21_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout21_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout22_ADDR    : std_logic_vector(5 downto 0) := "01" & x"9";
-    constant REG_TDC_FIFO_dout22_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout22_LSB     : integer := 0;
-
-    constant REG_TDC_FIFO_dout23_ADDR    : std_logic_vector(5 downto 0) := "01" & x"a";
-    constant REG_TDC_FIFO_dout23_MSB    : integer := 31;
-    constant REG_TDC_FIFO_dout23_LSB     : integer := 0;
-
-    constant REG_TDC_CTRL_RESET_ADDR    : std_logic_vector(5 downto 0) := "01" & x"b";
+    constant REG_TDC_CTRL_RESET_ADDR    : std_logic_vector(5 downto 0) := "00" & x"0";
     constant REG_TDC_CTRL_RESET_MSB    : integer := 31;
     constant REG_TDC_CTRL_RESET_LSB     : integer := 0;
 
-    constant REG_TDC_CTRL_CALIBRATE_ADDR    : std_logic_vector(5 downto 0) := "01" & x"c";
+    constant REG_TDC_CTRL_RESETTING_ADDR    : std_logic_vector(5 downto 0) := "00" & x"1";
+    constant REG_TDC_CTRL_RESETTING_BIT    : integer := 0;
+
+    constant REG_TDC_CTRL_CALIBRATE_ADDR    : std_logic_vector(5 downto 0) := "00" & x"2";
     constant REG_TDC_CTRL_CALIBRATE_MSB    : integer := 31;
     constant REG_TDC_CTRL_CALIBRATE_LSB     : integer := 0;
 
-    constant REG_TDC_CTRL_CALIBRATING_ADDR    : std_logic_vector(5 downto 0) := "01" & x"d";
+    constant REG_TDC_CTRL_CALIBRATING_ADDR    : std_logic_vector(5 downto 0) := "00" & x"3";
     constant REG_TDC_CTRL_CALIBRATING_BIT    : integer := 0;
 
-    constant REG_TDC_CTRL_CALLUT_DATA_ADDR    : std_logic_vector(5 downto 0) := "01" & x"d";
-    constant REG_TDC_CTRL_CALLUT_DATA_MSB    : integer := 12;
-    constant REG_TDC_CTRL_CALLUT_DATA_LSB     : integer := 1;
+    constant REG_TDC_CTRL_CALLUT_DATA_ADDR    : std_logic_vector(5 downto 0) := "00" & x"4";
+    constant REG_TDC_CTRL_CALLUT_DATA_MSB    : integer := 11;
+    constant REG_TDC_CTRL_CALLUT_DATA_LSB     : integer := 0;
 
-    constant REG_TDC_CTRL_CALLUT_ADDR_ADDR    : std_logic_vector(5 downto 0) := "01" & x"d";
-    constant REG_TDC_CTRL_CALLUT_ADDR_MSB    : integer := 21;
-    constant REG_TDC_CTRL_CALLUT_ADDR_LSB     : integer := 13;
-    constant REG_TDC_CTRL_CALLUT_ADDR_DEFAULT : std_logic_vector(21 downto 13) := '0' & x"00";
+    constant REG_TDC_CTRL_CALLUT_ADDR_ADDR    : std_logic_vector(5 downto 0) := "00" & x"4";
+    constant REG_TDC_CTRL_CALLUT_ADDR_MSB    : integer := 20;
+    constant REG_TDC_CTRL_CALLUT_ADDR_LSB     : integer := 12;
+    constant REG_TDC_CTRL_CALLUT_ADDR_DEFAULT : std_logic_vector(20 downto 12) := '0' & x"00";
 
-    constant REG_TDC_CTRL_VFAT_MASK_ADDR    : std_logic_vector(5 downto 0) := "01" & x"e";
+    constant REG_TDC_CTRL_VFAT_MASK_ADDR    : std_logic_vector(5 downto 0) := "00" & x"5";
     constant REG_TDC_CTRL_VFAT_MASK_MSB    : integer := 23;
     constant REG_TDC_CTRL_VFAT_MASK_LSB     : integer := 0;
     constant REG_TDC_CTRL_VFAT_MASK_DEFAULT : std_logic_vector(23 downto 0) := x"ffffff";
 
-    constant REG_TDC_CTRL_WINDOW_MASK_0_ADDR    : std_logic_vector(5 downto 0) := "01" & x"f";
+    constant REG_TDC_CTRL_WINDOW_MASK_0_ADDR    : std_logic_vector(5 downto 0) := "00" & x"6";
     constant REG_TDC_CTRL_WINDOW_MASK_0_MSB    : integer := 31;
     constant REG_TDC_CTRL_WINDOW_MASK_0_LSB     : integer := 0;
     constant REG_TDC_CTRL_WINDOW_MASK_0_DEFAULT : std_logic_vector(31 downto 0) := x"ffffffff";
 
-    constant REG_TDC_CTRL_WINDOW_MASK_1_ADDR    : std_logic_vector(5 downto 0) := "10" & x"0";
+    constant REG_TDC_CTRL_WINDOW_MASK_1_ADDR    : std_logic_vector(5 downto 0) := "00" & x"7";
     constant REG_TDC_CTRL_WINDOW_MASK_1_MSB    : integer := 31;
     constant REG_TDC_CTRL_WINDOW_MASK_1_LSB     : integer := 0;
     constant REG_TDC_CTRL_WINDOW_MASK_1_DEFAULT : std_logic_vector(31 downto 0) := x"ffffffff";
 
-    constant REG_TDC_CTRL_WINDOW_MASK_2_ADDR    : std_logic_vector(5 downto 0) := "10" & x"1";
+    constant REG_TDC_CTRL_WINDOW_MASK_2_ADDR    : std_logic_vector(5 downto 0) := "00" & x"8";
     constant REG_TDC_CTRL_WINDOW_MASK_2_MSB    : integer := 31;
     constant REG_TDC_CTRL_WINDOW_MASK_2_LSB     : integer := 0;
     constant REG_TDC_CTRL_WINDOW_MASK_2_DEFAULT : std_logic_vector(31 downto 0) := x"ffffffff";
 
-    constant REG_TDC_CTRL_WINDOW_MASK_3_ADDR    : std_logic_vector(5 downto 0) := "10" & x"2";
+    constant REG_TDC_CTRL_WINDOW_MASK_3_ADDR    : std_logic_vector(5 downto 0) := "00" & x"9";
     constant REG_TDC_CTRL_WINDOW_MASK_3_MSB    : integer := 31;
     constant REG_TDC_CTRL_WINDOW_MASK_3_LSB     : integer := 0;
     constant REG_TDC_CTRL_WINDOW_MASK_3_DEFAULT : std_logic_vector(31 downto 0) := x"ffffffff";
 
-    constant REG_TDC_CTRL_WINDOW_MASK_4_ADDR    : std_logic_vector(5 downto 0) := "10" & x"3";
+    constant REG_TDC_CTRL_WINDOW_MASK_4_ADDR    : std_logic_vector(5 downto 0) := "00" & x"a";
     constant REG_TDC_CTRL_WINDOW_MASK_4_MSB    : integer := 31;
     constant REG_TDC_CTRL_WINDOW_MASK_4_LSB     : integer := 0;
     constant REG_TDC_CTRL_WINDOW_MASK_4_DEFAULT : std_logic_vector(31 downto 0) := x"ffffffff";
 
-    constant REG_TDC_CTRL_WINDOW_MASK_5_ADDR    : std_logic_vector(5 downto 0) := "10" & x"4";
+    constant REG_TDC_CTRL_WINDOW_MASK_5_ADDR    : std_logic_vector(5 downto 0) := "00" & x"b";
     constant REG_TDC_CTRL_WINDOW_MASK_5_MSB    : integer := 31;
     constant REG_TDC_CTRL_WINDOW_MASK_5_LSB     : integer := 0;
     constant REG_TDC_CTRL_WINDOW_MASK_5_DEFAULT : std_logic_vector(31 downto 0) := x"ffffffff";
 
-    constant REG_TDC_CTRL_WINDOW_MASK_6_ADDR    : std_logic_vector(5 downto 0) := "10" & x"5";
+    constant REG_TDC_CTRL_WINDOW_MASK_6_ADDR    : std_logic_vector(5 downto 0) := "00" & x"c";
     constant REG_TDC_CTRL_WINDOW_MASK_6_MSB    : integer := 31;
     constant REG_TDC_CTRL_WINDOW_MASK_6_LSB     : integer := 0;
     constant REG_TDC_CTRL_WINDOW_MASK_6_DEFAULT : std_logic_vector(31 downto 0) := x"ffffffff";
 
-    constant REG_TDC_CTRL_WINDOW_MASK_7_ADDR    : std_logic_vector(5 downto 0) := "10" & x"6";
+    constant REG_TDC_CTRL_WINDOW_MASK_7_ADDR    : std_logic_vector(5 downto 0) := "00" & x"d";
     constant REG_TDC_CTRL_WINDOW_MASK_7_MSB    : integer := 31;
     constant REG_TDC_CTRL_WINDOW_MASK_7_LSB     : integer := 0;
     constant REG_TDC_CTRL_WINDOW_MASK_7_DEFAULT : std_logic_vector(31 downto 0) := x"ffffffff";
+
+    constant REG_TDC_FIFOS_VFAT0_ADDR    : std_logic_vector(5 downto 0) := "10" & x"0";
+    constant REG_TDC_FIFOS_VFAT0_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT0_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT1_ADDR    : std_logic_vector(5 downto 0) := "10" & x"1";
+    constant REG_TDC_FIFOS_VFAT1_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT1_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT2_ADDR    : std_logic_vector(5 downto 0) := "10" & x"2";
+    constant REG_TDC_FIFOS_VFAT2_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT2_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT3_ADDR    : std_logic_vector(5 downto 0) := "10" & x"3";
+    constant REG_TDC_FIFOS_VFAT3_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT3_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT4_ADDR    : std_logic_vector(5 downto 0) := "10" & x"4";
+    constant REG_TDC_FIFOS_VFAT4_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT4_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT5_ADDR    : std_logic_vector(5 downto 0) := "10" & x"5";
+    constant REG_TDC_FIFOS_VFAT5_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT5_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT6_ADDR    : std_logic_vector(5 downto 0) := "10" & x"6";
+    constant REG_TDC_FIFOS_VFAT6_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT6_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT7_ADDR    : std_logic_vector(5 downto 0) := "10" & x"7";
+    constant REG_TDC_FIFOS_VFAT7_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT7_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT8_ADDR    : std_logic_vector(5 downto 0) := "10" & x"8";
+    constant REG_TDC_FIFOS_VFAT8_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT8_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT9_ADDR    : std_logic_vector(5 downto 0) := "10" & x"9";
+    constant REG_TDC_FIFOS_VFAT9_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT9_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT10_ADDR    : std_logic_vector(5 downto 0) := "10" & x"a";
+    constant REG_TDC_FIFOS_VFAT10_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT10_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT11_ADDR    : std_logic_vector(5 downto 0) := "10" & x"b";
+    constant REG_TDC_FIFOS_VFAT11_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT11_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT12_ADDR    : std_logic_vector(5 downto 0) := "10" & x"c";
+    constant REG_TDC_FIFOS_VFAT12_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT12_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT13_ADDR    : std_logic_vector(5 downto 0) := "10" & x"d";
+    constant REG_TDC_FIFOS_VFAT13_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT13_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT14_ADDR    : std_logic_vector(5 downto 0) := "10" & x"e";
+    constant REG_TDC_FIFOS_VFAT14_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT14_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT15_ADDR    : std_logic_vector(5 downto 0) := "10" & x"f";
+    constant REG_TDC_FIFOS_VFAT15_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT15_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT16_ADDR    : std_logic_vector(5 downto 0) := "11" & x"0";
+    constant REG_TDC_FIFOS_VFAT16_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT16_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT17_ADDR    : std_logic_vector(5 downto 0) := "11" & x"1";
+    constant REG_TDC_FIFOS_VFAT17_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT17_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT18_ADDR    : std_logic_vector(5 downto 0) := "11" & x"2";
+    constant REG_TDC_FIFOS_VFAT18_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT18_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT19_ADDR    : std_logic_vector(5 downto 0) := "11" & x"3";
+    constant REG_TDC_FIFOS_VFAT19_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT19_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT20_ADDR    : std_logic_vector(5 downto 0) := "11" & x"4";
+    constant REG_TDC_FIFOS_VFAT20_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT20_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT21_ADDR    : std_logic_vector(5 downto 0) := "11" & x"5";
+    constant REG_TDC_FIFOS_VFAT21_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT21_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT22_ADDR    : std_logic_vector(5 downto 0) := "11" & x"6";
+    constant REG_TDC_FIFOS_VFAT22_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT22_LSB     : integer := 0;
+
+    constant REG_TDC_FIFOS_VFAT23_ADDR    : std_logic_vector(5 downto 0) := "11" & x"7";
+    constant REG_TDC_FIFOS_VFAT23_MSB    : integer := 31;
+    constant REG_TDC_FIFOS_VFAT23_LSB     : integer := 0;
 
 
 end registers;

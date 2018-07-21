@@ -2013,201 +2013,242 @@
             description="GBT Force vfat reset"
             fw_write_pulse_signal="reset_vfats_force"/>
 
-
     </node> <!--GBT-->
 
-<!--GBT module -->
-<node id="TDC"  address="0x5000"
+    <!--TDC module-->
+    <node id="TDC"  address="0x5000"
         description="Connects to TDC"
         fw_is_module="true"
         fw_module_file="../src/utils/oh_tdc.vhd"
-        fw_user_clock_signal="clock_i"
-        fw_bus_clock_signal="clock_i"
+        fw_user_clock_signal="clk_1x_i"
+        fw_bus_clock_signal="ipb_clk_i"
         fw_bus_reset_signal="ipb_reset_i"
         fw_master_bus_signal="ipb_mosi_i"
         fw_slave_bus_signal="ipb_miso_o"
         fw_reg_addr_msb="5"
         fw_reg_addr_lsb="0">
 
-        <node id="FIFO" address="0x0" description = "FIFO">
-            <node id="rden" address="0x0" permission="rw"
-                mask="0xffffff"
-                description="24 bit mask of FIFO read-enable"
-                fw_default="0x0"
-                fw_signal="fifo_rden"/>
-            <node id="valid" address="0x1" permission="r"
-                mask="0xffffff"
-                description="24 bit mask of FIFO valid"
-                fw_signal="fifo_valid"/>
-            <node id="underflow" address="0x2" permission="r"
-                mask="0xffffff"
-                description="24 bit mask of FIFO underflow"
-                fw_signal="fifo_underflow"/>
-            <node id="dout0" address="0x3" permission="r"
-                mask="0xffffffff"
-                description="VFAT0 32 bit fifo data out"
-                fw_signal="fifo_dout(0)"/>
-            <node id="dout1" address="0x4" permission="r"
-                mask="0xffffffff"
-                description="VFAT1 32 bit fifo data out"
-                fw_signal="fifo_dout(1)"/>
-            <node id="dout2" address="0x5" permission="r"
-                mask="0xffffffff"
-                description="VFAT2 32 bit fifo data out"
-                fw_signal="fifo_dout(2)"/>
-            <node id="dout3" address="0x6" permission="r"
-                mask="0xffffffff"
-                description="VFAT3 32 bit fifo data out"
-                fw_signal="fifo_dout(3)"/>
-            <node id="dout4" address="0x7" permission="r"
-                mask="0xffffffff"
-                description="VFAT4 32 bit fifo data out"
-                fw_signal="fifo_dout(4)"/>
-            <node id="dout5" address="0x8" permission="r"
-                mask="0xffffffff"
-                description="VFAT5 32 bit fifo data out"
-                fw_signal="fifo_dout(5)"/>
-            <node id="dout6" address="0x9" permission="r"
-                mask="0xffffffff"
-                description="VFAT6 32 bit fifo data out"
-                fw_signal="fifo_dout(6)"/>
-            <node id="dout7" address="0xa" permission="r"
-                mask="0xffffffff"
-                description="VFAT7 32 bit fifo data out"
-                fw_signal="fifo_dout(7)"/>
-            <node id="dout8" address="0xb" permission="r"
-                mask="0xffffffff"
-                description="VFAT8 32 bit fifo data out"
-                fw_signal="fifo_dout(8)"/>
-            <node id="dout9" address="0xc" permission="r"
-                mask="0xffffffff"
-                description="VFAT9 32 bit fifo data out"
-                fw_signal="fifo_dout(9)"/>
-            <node id="dout10" address="0xd" permission="r"
-                mask="0xffffffff"
-                description="VFAT10 32 bit fifo data out"
-                fw_signal="fifo_dout(10)"/>
-            <node id="dout11" address="0xe" permission="r"
-                mask="0xffffffff"
-                description="VFAT11 32 bit fifo data out"
-                fw_signal="fifo_dout(11)"/>
-            <node id="dout12" address="0xf" permission="r"
-                mask="0xffffffff"
-                description="VFAT12 32 bit fifo data out"
-                fw_signal="fifo_dout(12)"/>
-            <node id="dout13" address="0x10" permission="r"
-                mask="0xffffffff"
-                description="VFAT13 32 bit fifo data out"
-                fw_signal="fifo_dout(13)"/>
-            <node id="dout14" address="0x11" permission="r"
-                mask="0xffffffff"
-                description="VFAT14 32 bit fifo data out"
-                fw_signal="fifo_dout(14)"/>
-            <node id="dout15" address="0x12" permission="r"
-                mask="0xffffffff"
-                description="VFAT15 32 bit fifo data out"
-                fw_signal="fifo_dout(15)"/>
-            <node id="dout16" address="0x13" permission="r"
-                mask="0xffffffff"
-                description="VFAT16 32 bit fifo data out"
-                fw_signal="fifo_dout(16)"/>
-            <node id="dout17" address="0x14" permission="r"
-                mask="0xffffffff"
-                description="VFAT17 32 bit fifo data out"
-                fw_signal="fifo_dout(17)"/>
-            <node id="dout18" address="0x15" permission="r"
-                mask="0xffffffff"
-                description="VFAT18 32 bit fifo data out"
-                fw_signal="fifo_dout(18)"/>
-            <node id="dout19" address="0x16" permission="r"
-                mask="0xffffffff"
-                description="VFAT19 32 bit fifo data out"
-                fw_signal="fifo_dout(19)"/>
-            <node id="dout20" address="0x17" permission="r"
-                mask="0xffffffff"
-                description="VFAT20 32 bit fifo data out"
-                fw_signal="fifo_dout(20)"/>
-            <node id="dout21" address="0x18" permission="r"
-                mask="0xffffffff"
-                description="VFAT21 32 bit fifo data out"
-                fw_signal="fifo_dout(21)"/>
-            <node id="dout22" address="0x19" permission="r"
-                mask="0xffffffff"
-                description="VFAT22 32 bit fifo data out"
-                fw_signal="fifo_dout(22)"/>
-            <node id="dout23" address="0x1a" permission="r"
-                mask="0xffffffff"
-                description="VFAT23 32 bit fifo data out"
-                fw_signal="fifo_dout(23)"/>
-        </node>
-
-        <node id="CTRL" address="0x1b" description = "TDC Control">
+        <node id="CTRL" address="0x0" description = "TDC controls">
             <node id="RESET" address="0x0" permission="w"
-                description="Reset TDC Module"
+                description="Reset TDC module"
                 fw_write_pulse_signal="reset_local"/>
-            <node id="CALIBRATE" address="0x1" permission="w"
+            <node id="RESETTING" address="0x1" permission="r"
+                mask="0x00000001"
+                description="TDC module is resetting"
+                fw_signal="resetting"/>
+            <node id="CALIBRATE" address="0x2" permission="w"
                 description="Calibrate TDC Module"
                 fw_write_pulse_signal="calibrate"/>
-            <node id="CALIBRATING" address="0x2" permission="r"
+            <node id="CALIBRATING" address="0x3" permission="r"
                 mask="0x00000001"
                 description="Module is calibrating"
                 fw_signal="calibrating"/>
-            <node id="CALLUT_DATA" address="0x2" permission="r"
-                mask="0x00001ffe"
+            <node id="CALLUT_DATA" address="0x4" permission="r"
+                mask="0x00000fff"
                 description="Calibration LUT data"
                 fw_signal="callut_data"/>
-            <node id="CALLUT_ADDR" address="0x2" permission="rw"
-                mask="0x3fe000"
+            <node id="CALLUT_ADDR" address="0x4" permission="rw"
+                mask="0x1ff000"
                 description="Calibration LUT address"
                 fw_default="0x0"
-                fw_signal="callut_addr"/>
-            <node id="VFAT_MASK" address="0x3" permission="rw"
-                mask="0xffffff"
+                fw_signal="callut_addr"
+		fw_write_pulse_signal="callut_addr_pulse"
+                fw_write_done_signal="callut_addr_done"/>
+            <node id="VFAT_MASK" address="0x5" permission="rw"
+                mask="0x00ffffff"
                 description="24 bit VFAT Mask"
                 fw_default="0xffffffff"
                 fw_signal="vfat_mask"/>
-            <node id="WINDOW_MASK_0" address="0x4" permission="rw"
+            <node id="WINDOW_MASK_0" address="0x6" permission="rw"
                 mask="0xffffffff"
                 description="Window mask bits 31 to 0"
                 fw_default="0xffffffff"
                 fw_signal="window_mask(31 downto 0)"/>
-            <node id="WINDOW_MASK_1" address="0x5" permission="rw"
+            <node id="WINDOW_MASK_1" address="0x7" permission="rw"
                 mask="0xffffffff"
                 description="Window mask bits 63 to 32"
                 fw_default="0xffffffff"
                 fw_signal="window_mask(63 downto 32)"/>
-            <node id="WINDOW_MASK_2" address="0x6" permission="rw"
+            <node id="WINDOW_MASK_2" address="0x8" permission="rw"
                 mask="0xffffffff"
                 description="Window mask bits 95 to 64"
                 fw_default="0xffffffff"
                 fw_signal="window_mask(95 downto 64)"/>
-            <node id="WINDOW_MASK_3" address="0x7" permission="rw"
+            <node id="WINDOW_MASK_3" address="0x9" permission="rw"
                 mask="0xffffffff"
                 description="Window mask bits 127 to 96"
                 fw_default="0xffffffff"
                 fw_signal="window_mask(127 downto 96)"/>
-            <node id="WINDOW_MASK_4" address="0x8" permission="rw"
+            <node id="WINDOW_MASK_4" address="0xa" permission="rw"
                 mask="0xffffffff"
                 description="Window mask bits 159 to 128"
                 fw_default="0xffffffff"
                 fw_signal="window_mask(159 downto 128)"/>
-            <node id="WINDOW_MASK_5" address="0x9" permission="rw"
+            <node id="WINDOW_MASK_5" address="0xb" permission="rw"
                 mask="0xffffffff"
                 description="Window mask bits 191 to 160"
                 fw_default="0xffffffff"
                 fw_signal="window_mask(191 downto 160)"/>
-            <node id="WINDOW_MASK_6" address="0xa" permission="rw"
+            <node id="WINDOW_MASK_6" address="0xc" permission="rw"
                 mask="0xffffffff"
                 description="Window mask bits 223 to 192"
                 fw_default="0xffffffff"
                 fw_signal="window_mask(223 downto 192)"/>
-            <node id="WINDOW_MASK_7" address="0xb" permission="rw"
+            <node id="WINDOW_MASK_7" address="0xd" permission="rw"
                 mask="0xffffffff"
                 description="Window mask bits 255 to 224"
                 fw_default="0xffffffff"
                 fw_signal="window_mask(255 downto 224)"/>
         </node> <!--CTRL-->
 
+        <node id="FIFOS" address="0x20" description = "FIFOs for timing data readout">
+            <node id="VFAT0" address="0x0" permission="r"
+                mask="0xffffffff"
+                description="VFAT0 32 bit fifo"
+                fw_signal="fifo_dout(0)"
+		fw_read_pulse_signal="fifo_rden(0)"
+		fw_read_ready_signal="fifo_valid(0)"/>
+            <node id="VFAT1" address="0x1" permission="r"
+                mask="0xffffffff"
+                description="VFAT1 32 bit fifo"
+                fw_signal="fifo_dout(1)"
+		fw_read_pulse_signal="fifo_rden(1)"
+		fw_read_ready_signal="fifo_valid(1)"/>
+            <node id="VFAT2" address="0x2" permission="r"
+                mask="0xffffffff"
+                description="VFAT2 32 bit fifo"
+                fw_signal="fifo_dout(2)"
+		fw_read_pulse_signal="fifo_rden(2)"
+		fw_read_ready_signal="fifo_valid(2)"/>
+            <node id="VFAT3" address="0x3" permission="r"
+                mask="0xffffffff"
+                description="VFAT3 32 bit fifo"
+                fw_signal="fifo_dout(3)"
+		fw_read_pulse_signal="fifo_rden(3)"
+		fw_read_ready_signal="fifo_valid(3)"/>
+            <node id="VFAT4" address="0x4" permission="r"
+                mask="0xffffffff"
+                description="VFAT4 32 bit fifo"
+                fw_signal="fifo_dout(4)"
+		fw_read_pulse_signal="fifo_rden(4)"
+		fw_read_ready_signal="fifo_valid(4)"/>
+            <node id="VFAT5" address="0x5" permission="r"
+                mask="0xffffffff"
+                description="VFAT5 32 bit fifo"
+                fw_signal="fifo_dout(5)"
+		fw_read_pulse_signal="fifo_rden(5)"
+		fw_read_ready_signal="fifo_valid(5)"/>
+            <node id="VFAT6" address="0x6" permission="r"
+                mask="0xffffffff"
+                description="VFAT6 32 bit fifo"
+                fw_signal="fifo_dout(6)"
+		fw_read_pulse_signal="fifo_rden(6)"
+		fw_read_ready_signal="fifo_valid(6)"/>
+            <node id="VFAT7" address="0x7" permission="r"
+                mask="0xffffffff"
+                description="VFAT7 32 bit fifo"
+                fw_signal="fifo_dout(7)"
+		fw_read_pulse_signal="fifo_rden(7)"
+		fw_read_ready_signal="fifo_valid(7)"/>
+            <node id="VFAT8" address="0x8" permission="r"
+                mask="0xffffffff"
+                description="VFAT8 32 bit fifo"
+                fw_signal="fifo_dout(8)"
+		fw_read_pulse_signal="fifo_rden(8)"
+		fw_read_ready_signal="fifo_valid(8)"/>
+            <node id="VFAT9" address="0x9" permission="r"
+                mask="0xffffffff"
+                description="VFAT9 32 bit fifo"
+                fw_signal="fifo_dout(9)"
+		fw_read_pulse_signal="fifo_rden(9)"
+		fw_read_ready_signal="fifo_valid(9)"/>
+            <node id="VFAT10" address="0xa" permission="r"
+                mask="0xffffffff"
+                description="VFAT10 32 bit fifo"
+                fw_signal="fifo_dout(10)"
+		fw_read_pulse_signal="fifo_rden(10)"
+		fw_read_ready_signal="fifo_valid(10)"/>
+            <node id="VFAT11" address="0xb" permission="r"
+                mask="0xffffffff"
+                description="VFAT11 32 bit fifo"
+                fw_signal="fifo_dout(11)"
+		fw_read_pulse_signal="fifo_rden(11)"
+		fw_read_ready_signal="fifo_valid(11)"/>
+            <node id="VFAT12" address="0xc" permission="r"
+                mask="0xffffffff"
+                description="VFAT12 32 bit fifo"
+                fw_signal="fifo_dout(12)"
+		fw_read_pulse_signal="fifo_rden(12)"
+		fw_read_ready_signal="fifo_valid(12)"/>
+            <node id="VFAT13" address="0x0d" permission="r"
+                mask="0xffffffff"
+                description="VFAT13 32 bit fifo"
+                fw_signal="fifo_dout(13)"
+		fw_read_pulse_signal="fifo_rden(13)"
+		fw_read_ready_signal="fifo_valid(13)"/>
+            <node id="VFAT14" address="0x0e" permission="r"
+                mask="0xffffffff"
+                description="VFAT14 32 bit fifo"
+                fw_signal="fifo_dout(14)"
+		fw_read_pulse_signal="fifo_rden(14)"
+		fw_read_ready_signal="fifo_valid(14)"/>
+            <node id="VFAT15" address="0x0f" permission="r"
+                mask="0xffffffff"
+                description="VFAT15 32 bit fifo"
+                fw_signal="fifo_dout(15)"
+		fw_read_pulse_signal="fifo_rden(15)"
+		fw_read_ready_signal="fifo_valid(15)"/>
+            <node id="VFAT16" address="0x10" permission="r"
+                mask="0xffffffff"
+                description="VFAT16 32 bit fifo"
+                fw_signal="fifo_dout(16)"
+		fw_read_pulse_signal="fifo_rden(16)"
+		fw_read_ready_signal="fifo_valid(16)"/>
+            <node id="VFAT17" address="0x11" permission="r"
+                mask="0xffffffff"
+                description="VFAT17 32 bit fifo"
+                fw_signal="fifo_dout(17)"
+		fw_read_pulse_signal="fifo_rden(17)"
+		fw_read_ready_signal="fifo_valid(17)"/>
+            <node id="VFAT18" address="0x12" permission="r"
+                mask="0xffffffff"
+                description="VFAT18 32 bit fifo"
+                fw_signal="fifo_dout(18)"
+		fw_read_pulse_signal="fifo_rden(18)"
+		fw_read_ready_signal="fifo_valid(18)"/>
+            <node id="VFAT19" address="0x13" permission="r"
+                mask="0xffffffff"
+                description="VFAT19 32 bit fifo"
+                fw_signal="fifo_dout(19)"
+		fw_read_pulse_signal="fifo_rden(19)"
+		fw_read_ready_signal="fifo_valid(19)"/>
+            <node id="VFAT20" address="0x14" permission="r"
+                mask="0xffffffff"
+                description="VFAT20 32 bit fifo"
+                fw_signal="fifo_dout(20)"
+		fw_read_pulse_signal="fifo_rden(20)"
+		fw_read_ready_signal="fifo_valid(20)"/>
+            <node id="VFAT21" address="0x15" permission="r"
+                mask="0xffffffff"
+                description="VFAT21 32 bit fifo"
+                fw_signal="fifo_dout(21)"
+		fw_read_pulse_signal="fifo_rden(21)"
+		fw_read_ready_signal="fifo_valid(21)"/>
+            <node id="VFAT22" address="0x16" permission="r"
+                mask="0xffffffff"
+                description="VFAT22 32 bit fifo"
+                fw_signal="fifo_dout(22)"
+		fw_read_pulse_signal="fifo_rden(22)"
+		fw_read_ready_signal="fifo_valid(22)"/>
+            <node id="VFAT23" address="0x17" permission="r"
+                mask="0xffffffff"
+                description="VFAT23 32 bit fifo"
+                fw_signal="fifo_dout(23)"
+		fw_read_pulse_signal="fifo_rden(23)"
+		fw_read_ready_signal="fifo_valid(23)"/>
+        </node> <!--FIFOS-->
+
     </node> <!--TDC-->
 
 </node> <!--FPGA-->
+
