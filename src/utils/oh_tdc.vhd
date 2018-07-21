@@ -83,6 +83,10 @@ begin
     end process;
 
     tdc_inst : entity work.tdc
+    generic map (
+        g_TAPS  => 240,
+        g_LOC_X => 64,
+        g_LOC_Y => 80 )
     port map (
         clk_1x_i => clk_1x_i,
         clk_8x_i => clk_8x_i,

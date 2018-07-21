@@ -1,0 +1,4 @@
+# PlanAhead Generated physical constraints 
+
+INST "oh_tdc_inst/tdc_inst" AREA_GROUP = "pblock_oh_tdc_inst_tdc_inst";
+AREA_GROUP "pblock_oh_tdc_inst_tdc_inst" RANGE=CLOCKREGION_X1Y2:CLOCKREGION_X1Y4;
